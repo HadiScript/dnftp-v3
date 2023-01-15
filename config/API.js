@@ -1,1 +1,1 @@
-export const API = "http://fyp.hadiraza.com/api"
+export const API = "https://fyp.hadiraza.com/api"

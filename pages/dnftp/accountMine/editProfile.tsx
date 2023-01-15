@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
+import { API } from "../../../config/API";
 import { UserContext } from "../../../context";
 import { GlobalStyles } from "../../../styles/page-style/GlobalStyles";
 
@@ -35,7 +36,7 @@ const EditProfile = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/upload-profile-image",
+        `${API}/upload-profile-image`,
         formData
       );
       // console.log('uploaded image data', data)
@@ -54,7 +55,7 @@ const EditProfile = () => {
     try {
       setImageLoading(true);
       const { data } = await axios.post(
-        "http://localhost:8000/api/remove-profile-photo",
+        `${API}/remove-profile-photo`,
         { filepath: image.public_id }
       );
 
@@ -82,7 +83,7 @@ const EditProfile = () => {
 
       setLoading(true);
       const { data } = await axios.put(
-        `http://localhost:8000/api/update-profile`,
+        `${API}/update-profile`,
         {
           name,
           about,

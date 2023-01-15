@@ -10,6 +10,7 @@ import BoxStats from "../../../UI/components2/MyProfileStats/BoxStats";
 import BoxRowStats from "../../../UI/components2/MyProfileStats/BoxRowStats";
 import Link from "next/link";
 import { UserContext } from "../../../context";
+import { API } from "../../../config/API";
 
 const MyProfile = () => {
   const { account } = useAccount();
@@ -30,7 +31,7 @@ const MyProfile = () => {
 
   const fetchMyNewsFeed = async () => {
     try {
-      const { data } = await axios.post(`http://localhost:8000/api/my-feeds/`, {
+      const { data } = await axios.post(`${API}/my-feeds/`, {
         logedIn_id: state.user._id,
         logedIn: state.user ? true : false,
       });
@@ -44,7 +45,7 @@ const MyProfile = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `http://localhost:8000/api/my-profile`,
+        `${API}/my-profile`,
         {
           account: account.data,
         }

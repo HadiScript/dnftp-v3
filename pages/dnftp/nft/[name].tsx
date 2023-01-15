@@ -105,7 +105,7 @@ const DetailNFT = () => {
 
   const goingToBuyNft = async (x) => {
     try {
-      const {data} = await axios.post(`http://localhost:8000/api/buy-nft`, {
+      const {data} = await axios.post(`${API}/buy-nft`, {
         buyer: state.user.account,
         item: x,
       });

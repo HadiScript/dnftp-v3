@@ -49,7 +49,7 @@ const Timelines = () => {
   const fetchVisitorsPosts = async () => {
     try {
       setPostLoading2(true);
-      const { data } = await axios.get(`http://localhost:8000/api/timelines/`);
+      const { data } = await axios.get(`${API}/timelines/`);
       setvisitorPosts(data);
       setPostLoading2(false);
     } catch (error) {
@@ -62,7 +62,7 @@ const Timelines = () => {
   const fetchMyNewsFeed = async () => {
     try {
       setPostLoading(true);
-      const { data } = await axios.post(`http://localhost:8000/api/my-feeds/`, {
+      const { data } = await axios.post(`${API}/my-feeds/`, {
         logedIn_id: state.user._id,
         logedIn: state.user ? true : false,
       });
@@ -116,7 +116,7 @@ const Timelines = () => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:8000/api/create-post`,
+        `${API}/create-post`,
         {
           content,
           userID: state.user._id,

@@ -85,7 +85,7 @@ const ProfileOne = () => {
   const handleFollow = async (user) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:8000/api/user-follow`,
+        `${API}/user-follow`,
         {
           _id: user._id,
           account: state.user._id,
@@ -117,7 +117,7 @@ const ProfileOne = () => {
   const handleUnfollow = async (user) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:8000/api/user-unfollow`,
+        `${API}/user-unfollow`,
         {
           _id: user._id,
           account: state.user._id,

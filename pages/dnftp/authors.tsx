@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
+import { API } from "../../config/API";
 import { UserContext } from "../../context";
 
 import { GlobalStyles } from "../../styles/page-style/GlobalStyles";
@@ -28,7 +29,7 @@ const Authors = () => {
   const fetchingTopSellers = async () => {
     try {
       setSellerLoading(true);
-      const { data } = await axios.get(`http://localhost:8000/api/top-sellers`);
+      const { data } = await axios.get(`${API}/top-sellers`);
       // console.log(data, "from requested users");
       setTopSellers(data);
       setSellerLoading(false);
@@ -40,7 +41,7 @@ const Authors = () => {
   const fetchingHighCollectionsUsers = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/high-collections`
+        `${API}/high-collections`
       );
       setUsersHighCollectionsNfts(data);
     } catch (error) {
@@ -52,7 +53,7 @@ const Authors = () => {
   const fetchingAllUsers = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`http://localhost:8000/api/all-users`);
+      const { data } = await axios.get(`${API}/all-users`);
       setLoading(false);
       setUsers(data);
     } catch (error) {

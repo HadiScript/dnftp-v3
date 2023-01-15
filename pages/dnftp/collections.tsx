@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import Reveal from "react-awesome-reveal";
 import { keyframes } from "styled-components";
+import { API } from "../../config/API";
 import { UserContext } from "../../context";
 import { GlobalStyles } from "../../styles/page-style/GlobalStyles";
 import CarouselCollection from "../../UI/components/CarouselCollection";
@@ -33,7 +34,7 @@ const Collections = () => {
   const fetchingAllUsers = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`http://localhost:8000/api/all-users`);
+      const { data } = await axios.get(`${API}/all-users`);
       // console.log(data, "from requested users");
       setLoading(false);
       setUsers(data);

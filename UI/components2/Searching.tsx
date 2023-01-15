@@ -9,6 +9,7 @@ import AuthorInSearchRes from "./AuthorInSearchRes";
 import { GoGistSecret } from "react-icons/go";
 import { useAccount } from "../../hooks/web3";
 import { AiFillWallet, AiOutlineWallet } from "react-icons/ai";
+import { API } from "../../config/API";
 
 const GlobalStyles = createGlobalStyle`
 header#myHeader.navbar.white {
@@ -38,7 +39,7 @@ const Searching = () => {
     // console.log(query, 'from search')
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/search-author/${query}`
+        `${API}/search-author/${query}`
       );
       // console.log(data, 'from search')
       setResult(data);
@@ -74,7 +75,7 @@ const Searching = () => {
         //   toast.error("You cant make connection with him");
         // } else {
           const { data } = await axios.put(
-            `http://localhost:8000/api/user-follow`,
+            `${API}/user-follow`,
             {
               _id: user._id,
               account: state.user._id,
@@ -109,7 +110,7 @@ const Searching = () => {
     } else {
       try {
         const { data } = await axios.put(
-          `http://localhost:8000/api/user-unfollow`,
+          `${API}/user-unfollow`,
           {
             _id: user._id,
             account: state.user._id,
