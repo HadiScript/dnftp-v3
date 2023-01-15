@@ -1,0 +1,1 @@
+export const API = "http://fyp.hadiraza.com/api"
