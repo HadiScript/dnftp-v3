@@ -25,7 +25,7 @@ const fadeInUp = keyframes`
 }
 `;
 
-const explore = () => {
+const Explore = () => {
   const [allnfts, setAllNfts] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -260,4 +260,4 @@ const explore = () => {
   );
 };
 
-export default explore;
+export default Explore;

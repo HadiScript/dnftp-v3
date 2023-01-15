@@ -119,7 +119,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const about = () => {
+const About = () => {
   return (
     <>
       <GlobalStyles />
@@ -137,11 +137,11 @@ const about = () => {
               >
                 <div>
                   <h4>List of abbreviation</h4>
-                  DApp – Decentralized App <br />
-                  DNFTP –Development of NFTs Platform <br />
-                  NFTs – Non-Fungible Tokens <br />
-                  P2P –Peer to Peer Network <br />
-                  ETH – Ethereum
+                  DApp  Decentralized App <br />
+                  DNFTP Development of NFTs Platform <br />
+                  NFTs  Non-Fungible Tokens <br />
+                  P2P Peer to Peer Network <br />
+                  ETH  Ethereum
                   <br />
                 </div>
               </Reveal>
@@ -165,16 +165,16 @@ const about = () => {
                     (blockchain) application{" "}
                   </b>{" "}
                   for those who want to buy and sell NFTs by using secure app
-                  and Ganache Network with digital currency. The primary
+                  and Ganache Network with digital currency The primary
                   objective of this DNFTP DApp is to supervise all transactions
-                  and to resolve all issues during transactions like Rug Pulls,
-                  much more Gas Fee and lack of communication . This DNFTP DApp
-                  also helps buyers and sellers to make links with each other.
+                  and to resolve all issues during transactions like Rug Pulls
+                  much more Gas Fee and lack of communication This DNFTP DApp
+                  also helps buyers and sellers to make links with each other
                   This DNFTP DApp can prove to be very helpful to any user who
-                  already has NFTs and MetaData. By this platform users are able
-                  to do transactions with metamask with Ethereum currency. Users
+                  already has NFTs and MetaData By this platform users are able
+                  to do transactions with metamask with Ethereum currency Users
                   are also able to see all of his transactions and all the stats
-                  of this DNFTP DApp in mobile application (Android and Ios)
+                  of this DNFTP DApp in mobile application Android and Ios
                 </p>
                 <br />
               </div>
@@ -190,16 +190,16 @@ const about = () => {
               <div>
                 <h4>Introduction</h4>
                 <p>
-                  Non Fungible Tokens (NFTs) first developed in 2012. It was an
-                  early era of the NFTs market. “Colored coins” concept for the
-                  bitcoin blockchain was introduced in this era. In 2017-2020
-                  NFTs goes to the mainstream market, it shifts to Ethereum.
-                  Token standard was also introduced in this tenure. After this,
-                  2021 is the year of NFTs. The Beeple NFTs are sold for a
-                  record amount. Development of Non fungible Tokens NFTs
+                  Non Fungible Tokens (NFTs) first developed in 2012 It was an
+                  early era of the NFTs market “Colored coins” concept for the
+                  bitcoin blockchain was introduced in this era In 2017-2020
+                  NFTs goes to the mainstream market it shifts to Ethereum
+                  Token standard was also introduced in this tenure After this
+                  2021 is the year of NFTs The Beeple NFTs are sold for a
+                  record amount Development of Non fungible Tokens NFTs
                   Platform (DNFTP) is the complete NFTs marketplace for buying
-                  and selling NFTs by using ETH digital currency. It will be a
-                  multi-vendor decentralized blockchain based application.
+                  and selling NFTs by using ETH digital currency It will be a
+                  multi-vendor decentralized blockchain based application
                 </p>
                 <br />
               </div>
@@ -217,7 +217,7 @@ const about = () => {
                 <p>
                   A decentralized app (DApp) is an application that runs on a
                   peer-to-peer (P2P) blockchain network rather than on a single
-                  computer. These DApp are made with two things one is frontend
+                  computer These DApp are made with two things one is frontend
                   that is used for interaction with system and other one is
                   smart contract which is used to complete the transaction
                   between two parties
@@ -237,13 +237,13 @@ const about = () => {
                 <h4>What are NFTs?</h4>
                 <p>
                   Non fungible tokens NFTs are cryptographic assets that are
-                  created on blockchain technology, and have unique
-                  identification codes and metadata, which makes them
-                  distinguishable, distinct and completely unique these millions
+                  created on blockchain technology and have unique
+                  identification codes and metadata which makes them
+                  distinguishable distinct and completely unique these millions
                   worth tokens are being securely transacted across
-                  decentralized platform called NFTs marketplace. It can't be
-                  copied, substituted and sub-divided that is obtained in a
-                  blockchain.
+                  decentralized platform called NFTs marketplace It cant be
+                  copied substituted and sub-divided that is obtained in a
+                  blockchain
                 </p>
                 <br />
               </div>
@@ -261,8 +261,8 @@ const about = () => {
                 <p>
                   As there are many DApp available in the market for selling and
                   buying NFTs but also having some major problems like Rug
-                  Pulls, much more Gas Fee and lack of communication between
-                  buyer and seller.
+                  Pulls much more Gas Fee and lack of communication between
+                  buyer and seller
                 </p>
                 <br />
               </div>
@@ -274,4 +274,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
