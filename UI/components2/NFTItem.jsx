@@ -52,7 +52,6 @@ const NFTItem = ({ nft, offline }) => {
   return (
     <>
       <Tilt scale={scale} transitionSpeed={4000}>
-     
         <div className="d-item">
           <div className="nft__item">
             <div className="nft__item_wrap">
@@ -69,7 +68,7 @@ const NFTItem = ({ nft, offline }) => {
               </Tilt>
             </div>
             <div className="nft__item_info">
-              <span >
+              <span>
                 <h4>
                   <Link
                     href={`/dnftp/nft/${offline ? nft.name : nft.meta.name}`}
@@ -124,7 +123,6 @@ const NFTItem = ({ nft, offline }) => {
             </div>
           </div>
         </div>
-        
       </Tilt>
     </>
   );

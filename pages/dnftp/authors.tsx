@@ -18,6 +18,7 @@ const Authors = () => {
   const [usersHighCollectionsNfts, setUsersHighCollectionsNfts] = useState([]);
   const [topSellers, setTopSellers] = useState([]);
   const [sellerLoading, setSellerLoading] = useState(false);
+  const [collectionLoading, setCollectionLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,7 +31,6 @@ const Authors = () => {
     try {
       setSellerLoading(true);
       const { data } = await axios.get(`${API}/top-sellers`);
-      // console.log(data, "from requested users");
       setTopSellers(data);
       setSellerLoading(false);
     } catch (error) {
@@ -40,12 +40,12 @@ const Authors = () => {
   };
   const fetchingHighCollectionsUsers = async () => {
     try {
-      const { data } = await axios.get(
-        `${API}/high-collections`
-      );
+      setCollectionLoading(true);
+      const { data } = await axios.get(`${API}/high-collections`);
       setUsersHighCollectionsNfts(data);
+      setCollectionLoading(false);
     } catch (error) {
-      setLoading(false);
+      setCollectionLoading(false);
       console.log(error);
     }
   };
@@ -83,9 +83,27 @@ const Authors = () => {
       {/* right box */}
       <section className="bg">
         <div className="row">
-          <div className="col-lg-7 offset-lg-1 mb-5">
+          <div className="col-lg-3 offset-lg-1 mb-5 ">
+            <div className="nft__item m-0">
+              <Searching />
+              {state && state.user && state.user.following && (
+                <Link href={"/user/following"}>
+                  <a className="h6"> {state.user.following.length} Following</a>
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <div className="col-lg-8 col-sm-6 col-xs-12">
+            <div className="row">
+              <h5>All Authors</h5>
+              {loading && <p>loading...</p>}
+              {users && users.map((x) => <AuthorItems user={x} key={x._id} />)}
+            </div>
+
             <div className="row">
               <h5>Top Collections</h5>
+              {collectionLoading && <p>loading...</p>}
               {usersHighCollectionsNfts &&
                 usersHighCollectionsNfts.map((x) => (
                   <AuthorItems user={x} key={x._id} />
@@ -95,24 +113,9 @@ const Authors = () => {
             <div className="spacer-20"></div>
             <div className="row">
               <h5>Top Sellers</h5>
+              {sellerLoading && <p>loading...</p>}
               {topSellers &&
                 topSellers.map((x) => <AuthorItems user={x} key={x._id} />)}
-            </div>
-            <div className="spacer-20"></div>
-            <div className="row">
-              <h5>All Authors</h5>
-              {users && users.map((x) => <AuthorItems user={x} key={x._id} />)}
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-sm-6 col-xs-12 ">
-            <div className="nft__item m-0">
-              <Searching />
-              {state && state.user && state.user.following && (
-                <Link href={"/user/following"}>
-                  <a className="h6"> {state.user.following.length} Following</a>
-                </Link>
-              )}
             </div>
           </div>
         </div>

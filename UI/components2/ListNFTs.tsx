@@ -27,6 +27,8 @@ const fadeInUp = keyframes`
 `;
 
 const ListNFTs = () => {
+  const [showNumber, setShowNumber] = useState(4);
+
   const { nfts } = useListedNfts();
   const [state] = useContext(UserContext);
   const { account } = useAccount();
@@ -99,11 +101,18 @@ const ListNFTs = () => {
   return (
     <>
       <section className="container">
+        {loading && <p>loading...</p>}
+        <Reveal
+          className="onStep"
+          keyframes={fadeInUp}
+          delay={300}
+          duration={600}
+          cascade
+        >
+          <h2>NFTs</h2>
+        </Reveal>
         <div className="col-md-3 col-sm-6 col-xs-1">
-          <div className="widget">
-            <h5>
-              Search <BiSearch />
-            </h5>
+          <div className="widget py-2">
             <form
               action="#"
               className="row form-dark"
@@ -111,7 +120,7 @@ const ListNFTs = () => {
               method="post"
               name="form_subscribe"
             >
-              <div className="col text-center">
+              <div className="row text-center">
                 <input
                   className="form-control"
                   id="txt_subscribe"
@@ -122,33 +131,22 @@ const ListNFTs = () => {
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
+              <small>
+                Explore more nfts
+                <Link
+                  style={{ color: "blue", cursor: "pointer" }}
+                  href={"/dnftp/explore"}
+                >
+                  <a>Tap here</a>
+                </Link>
+              </small>
             </form>
-            <small>
-              Explore more nfts{" "}
-              <Link
-                style={{ color: "blue", cursor: "pointer" }}
-                href={"/dnftp/explore"}
-              >
-                <a>Tap here</a>
-              </Link>
-            </small>
           </div>
         </div>
 
         <div className="row">
-          {loading && <p>loading...</p>}
-          <Reveal
-            className="onStep"
-            keyframes={fadeInUp}
-            delay={300}
-            duration={600}
-            cascade
-          >
-            <h2>All Hot NFTs</h2>
-          </Reveal>
-          <div className="col-lg-12 mb-2">{/* <h2>NFTs</h2> */}</div>
           {account.data ? (
-            nfts.data.map((nft: any, index) => (
+            nfts.data.slice(0, showNumber).map((nft: any, index) => (
               <div
                 key={index}
                 className="d-item  col-lg-3 col-md-6 col-sm-6 col-xs-12"
@@ -166,25 +164,52 @@ const ListNFTs = () => {
             ))
           ) : (
             <>
-              {handleSearch().map((nft: any, index) => (
-                <div
-                  key={index}
-                  className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-                >
-                  <Reveal
-                    className="onStep"
-                    keyframes={fadeInUp}
-                    delay={300}
-                    duration={600}
-                    cascade
+              {handleSearch()
+                .slice(0, showNumber)
+                .map((nft: any, index) => (
+                  <div
+                    key={index}
+                    className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   >
-                    <NFTItem nft={nft} offline={true} />
-                  </Reveal>
-                </div>
-              ))}
+                    <Reveal
+                      className="onStep"
+                      keyframes={fadeInUp}
+                      delay={300}
+                      duration={600}
+                      cascade
+                    >
+                      <NFTItem nft={nft} offline={true} />
+                    </Reveal>
+                  </div>
+                ))}
             </>
           )}
         </div>
+        <span
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "10px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            setShowNumber(8);
+          }}
+        >
+          {showNumber === 4 ? (
+            "show more"
+          ) : (
+            <>
+              {" "}
+              <Link
+                style={{ color: "blue", cursor: "pointer" }}
+                href={"/dnftp/explore"}
+              >
+                <a> Explore more </a>
+              </Link>{" "}
+            </>
+          )}
+        </span>
       </section>
     </>
   );

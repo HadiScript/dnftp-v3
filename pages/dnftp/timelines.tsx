@@ -16,7 +16,7 @@ import CommentForm from "../../UI/components2/post/CommentForm";
 import PostChart from "../../UI/components2/post/PostChart";
 import { useAccount } from "../../hooks/web3";
 
-const Timelines = () => {
+const Timelines = ({ homePage = false }) => {
   const [state, setState] = useContext(UserContext);
   const { account } = useAccount();
   const [content, setContent] = useState("");
@@ -212,38 +212,54 @@ const Timelines = () => {
   };
 
   return (
-    <div>
+    <>
       <GlobalStyles />
 
       <section className="bg">
-        <div className="spacer-double"></div>
+        {homePage && (
+          <>
+            <h2
+              style={{ cursor: "pointer" }}
+              onClick={() => router.push("/dnftp/timelines")}
+            >
+              Communities
+            </h2>
+            <small style={{ marginTop: "-10px", marginBottom: "0px" }}>
+              tap for explore more
+            </small>
+          </>
+        )}
         <div className="row">
           {/* right box */}
-          <div className="col-lg-7 offset-lg-1 mb-5">
-            <div className="nft__item m-0">
-              {state &&
-              state.user &&
-              state.user.followers &&
-              state.user.followers.length > 0 ? (
-                <CreatePostForm
-                  postSubmit={postSubmit}
-                  content={content}
-                  setContent={setContent}
-                />
-              ) : (
-                <h5>
-                  {" "}
-                  Timelines{" "}
-                  <i
-                    className="fa fa-clock-o px-2"
-                    style={{ color: "#8364E2" }}
-                  ></i>{" "}
-                </h5>
-              )}
-            </div>
-            <div className="spacer-double"></div>
+          <div className={`col-lg-7 ${!homePage && `offset-lg-1`} mb-5`}>
+            {!homePage && (
+              <div className="nft__item m-0">
+                {state &&
+                state.user &&
+                state.user.followers &&
+                state.user.followers.length > 0 ? (
+                  <CreatePostForm
+                    postSubmit={postSubmit}
+                    content={content}
+                    setContent={setContent}
+                  />
+                ) : (
+                  <h5>
+                    {" "}
+                    Timelines{" "}
+                    <i
+                      className="fa fa-clock-o px-2"
+                      style={{ color: "#8364E2" }}
+                    ></i>{" "}
+                  </h5>
+                )}
+              </div>
+            )}
+            {!homePage && <div className="spacer-double"></div>}
 
             <PostList
+              homePage={homePage}
+              showPosts={homePage ? true : false}
               posts={
                 account.data && state && state.user ? myPosts : visitorPosts
               }
@@ -283,7 +299,7 @@ const Timelines = () => {
           />
         </Modal.Body>
       </Modal>
-    </div>
+    </>
   );
 };
 

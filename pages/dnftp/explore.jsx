@@ -239,7 +239,7 @@ const Explore = () => {
                 handleSearch().map((nft, index) => (
                   <div
                     key={index}
-                    className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                    className="d-item col-lg-4 col-md-6 col-sm-6 col-xs-12"
                   >
                     <Reveal
                       className="onStep"

@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-import React from "react";
+import React, { useState } from "react";
 import renderHTML from "react-render-html";
 import moment from "moment";
 import { useRouter } from "next/router";
@@ -16,6 +16,8 @@ const PostList = ({
   handleLike,
   handleUnlike,
   state,
+  homePage,
+  showPosts,
 }) => {
   const router = useRouter();
 
@@ -26,7 +28,7 @@ const PostList = ({
           <Loader />
         </section>
       ) : (
-        posts.map((x) => (
+        posts.slice(0, showPosts ? 2 : posts.length).map((x) => (
           <div className=" p-2">
             <ul className="post-list">
               <li className="">

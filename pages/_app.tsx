@@ -20,15 +20,17 @@ import "../styles/style.scss";
 
 import "../styles/page-style/loader.css";
 
+import { GlobalStyles } from "../styles/page-style/GlobalStyles";
+
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Head from "next/head";
 
-const GlobalStyles = createGlobalStyle`
-  :root {
-    scroll-behavior: unset;
-  }
-`;
+// const GlobalStyles = createGlobalStyle`
+//   :root {
+//     scroll-behavior: unset;
+//   }
+// `;
 
 export const ScrollTop = ({ children, location }) => {
   useEffect(() => window.scrollTo(0, 0), [location]);
@@ -42,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <GlobalStyles />
       <Head>
         <title> App By Hadi </title>
         <meta name="description" content="By hadiraza.com" />
@@ -53,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <Web3Provider>
           <div className="wraper">
-            <GlobalStyles />
+            
             <Navbar />
             <Component {...pageProps} />
             <Footer />

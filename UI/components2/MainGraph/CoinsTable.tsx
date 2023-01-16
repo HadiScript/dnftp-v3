@@ -57,7 +57,7 @@ const options1 = [
   { value: "Utility", label: "Utility" },
 ];
 
-const CoinsTable = () => {
+const CoinsTable = ({ homePage }) => {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -117,8 +117,19 @@ const CoinsTable = () => {
   return (
     <div>
       <GlobalStyles />
-      <section className="container">
+      <section className="">
         <div className="row">
+          {homePage && (
+            <>
+              <h2
+                style={{ cursor: "pointer" }}
+                onClick={() => router.push("/dnftp/track")}
+              >
+                Market <br />
+              </h2>
+                <small style={{marginTop : "-10px", marginBottom : "10px"}}>tap for explore more</small>
+            </>
+          )}
           <div className="col-lg-12">
             {/* <div className="items_filter centerEl">
               <input
@@ -179,6 +190,7 @@ const CoinsTable = () => {
                 ) : (
                   <>
                     {handleSearch()
+                      .slice(0, homePage ? 10 : handleSearch().length)
                       // for paginations
                       // .slice((page - 1) * 5, (page - 1) * 5 + 5)
                       .map((row, index) => {

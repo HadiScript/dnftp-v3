@@ -30,23 +30,24 @@ const customAnimation = keyframes`
   }
 `;
 const ArtNft = () => {
-
   const router = useRouter();
 
   return (
-    <div>
+    <>
+   
+
+
       <section
         className="jumbotron no-bg"
         style={{
+          height : "130vh !important",
           backgroundImage: `url(${"/img/background/7.jpg"})`,
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        // style={{ backgroundImage: `url(${"/img/background/7.jpg"})` }}
       >
-        {/* <Particle /> */}
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -56,10 +57,10 @@ const ArtNft = () => {
                 keyframes={fadeInUp}
                 delay={0}
                 duration={600}
-                cascade
+                triggerOnce
               >
                 <h6 className="">
-                  <span className="text-uppercase color">Categories</span>
+                  <span className="text-uppercase color">Gigaland Market</span>
                 </h6>
               </Reveal>
               <div className="spacer-10"></div>
@@ -68,16 +69,16 @@ const ArtNft = () => {
                 keyframes={fadeInUp}
                 delay={300}
                 duration={600}
-                cascade
+                triggerOnce
               >
-                <h1 className="">Top Categories Of NFTs.</h1>
+                <h1 className="">Create, sell or collect digital items.</h1>
               </Reveal>
               <Reveal
                 className="onStep"
                 keyframes={fadeInUp}
                 delay={600}
                 duration={600}
-                cascade
+                triggerOnce
               >
                 <p className=" lead">
                   Unit of data stored on a digital ledger, called a blockchain,
@@ -91,47 +92,25 @@ const ArtNft = () => {
                 keyframes={fadeInUp}
                 delay={800}
                 duration={900}
-                cascade
+                triggerOnce
               >
-                <div className="d-flex justify-content-center-align-items-center gap-2">
-                  <span
-                    onClick={() => router.push('/dnftp/category/art')}
-                    className="btn-main lead"
-                  >
-                    Art
-                  </span>
-                  <span
-                    onClick={() => router.push('/dnftp/category/gif')}
-                    className="btn-main lead"
-                  >
-                    GIF
-                  </span>
-                  <span
-                    onClick={() => router.push('/dnftp/category/painting')}
-                    className="btn-main lead"
-                  >
-                    Paiting
-                  </span>
-                </div>
+                <span
+                  onClick={() => window.open("/#", "_self")}
+                  className="btn-main lead"
+                >
+                  Explore
+                </span>
                 <div className="mb-sm-30"></div>
               </Reveal>
               <div className="spacer-double"></div>
             </div>
             <div className="col-lg-6 px-0">
-              <Reveal
-                className="onStep"
-                keyframes={customAnimation}
-                delay={300}
-                duration={600}
-                cascade
-              >
-                <SliderCarousel />
-              </Reveal>
+              <SliderCarousel />
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

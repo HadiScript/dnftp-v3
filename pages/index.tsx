@@ -21,6 +21,9 @@ import ArtNft from "../UI/components2/ArtNft";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Alert } from "react-bootstrap";
+import Timelines from "./dnftp/timelines";
+import CoinsTable from "../UI/components2/MainGraph/CoinsTable";
+import { ResponsiveSlider } from "../UI/components2/MainGraph/Slider";
 const fadeInUp = keyframes`
   0% {
     opacity: 0;
@@ -206,24 +209,28 @@ export default function Home() {
   return (
     <div>
       <GlobalStyles />
-      <Alert
-        variant="info"
-        style={{
-          width: "500px",
-          padding: "10px",
-          position: "fixed",
-          bottom: "0px",
-          left: "30%",
-        }}
-      >
-        <h5>
-          {" "}
-          <span className="text-dark" >This project is under development,</span>{" "}
-          <Link href={"/about"}>
-            <a>About this project</a>
-          </Link>
-        </h5>
-      </Alert>
+      {show && (
+        <Alert
+          onClick={() => setShow(false)}
+          variant="info"
+          style={{
+            position: "fixed",
+            bottom: "30%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <h5>
+            {" "}
+            <span className="text-dark">
+              This project is under development,
+            </span>{" "}
+            <Link href={"/about"}>
+              <a>About this project</a>
+            </Link>
+          </h5>
+        </Alert>
+      )}
 
       {/* top sections */}
       <section
@@ -231,9 +238,9 @@ export default function Home() {
         style={{ backgroundImage: `url(${"./img/background/8.jpg"})` }}
       >
         {/* for the mobile view */}
-        <div className="nav-icon">
-          <SliderMainParticle />
-        </div>
+        {/* <div className="nav-icon">
+          <ResponsiveSlider />
+        </div> */}
         <Reveal
           className="onStep"
           keyframes={fadeInUp}
@@ -241,27 +248,31 @@ export default function Home() {
           duration={600}
           cascade
         >
-          <div className="container xs-hide">
-            <div className="row align-items-center justify-content-center">
-              <MainGraph />
-              <button
-                className="btn-main"
-                onClick={() => router.push("/dnftp/track")}
-              >
-                Explore Market
-              </button>
-            </div>
-          </div>
+          {/* <div className="container xs-hide">
+            <div className="row align-items-center justify-content-center"> */}
+          {/* <MainGraph /> */}
+
+          <ResponsiveSlider />
+          {/* <button
+            className="btn-main"
+            onClick={() => router.push("/dnftp/track")}
+          >
+            Explore Market
+          </button> */}
+          {/* </div>
+          </div> */}
         </Reveal>
       </section>
 
       {/* <nfts sections /> */}
       <section className="no-bottom">
         <ListNFTs />
-        <ArtNft />
       </section>
 
+
+      {/* <ArtNft /> */}
       {/* author list */}
+      
       <section className="container no-top no-bottom">
         <div className="row">
           <div className="spacer-double"></div>
@@ -277,6 +288,39 @@ export default function Home() {
             </div>
             <div className="col-lg-12">
               <AuthorList />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="container no-top no-bottom">
+        <div className="row">
+          <Reveal
+            className="onStep"
+            keyframes={fadeInUp}
+            delay={0}
+            duration={600}
+            cascade
+          >
+            <div className="col-lg-12">
+              <Timelines homePage={true} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="container no-top no-bottom">
+        <hr />
+        <div className="row">
+          <Reveal
+            className="onStep"
+            keyframes={fadeInUp}
+            delay={0}
+            duration={600}
+            cascade
+          >
+            <div className="col-lg-12">
+              <CoinsTable homePage={true} />
             </div>
           </Reveal>
         </div>
